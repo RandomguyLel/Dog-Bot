@@ -18,7 +18,7 @@ GUILD = os.getenv('DISCORD_GUILD')
 PREFIX = os.getenv('DISCORD_PREFIX')
 client = discord.Client(intents=intents)
 
-client = Bot(command_prefix=list(PREFIX))
+client = Bot(command_prefix=list(PREFIX),intents=intents)
 
 x = datetime.now()  #console time log
 x = str(x)
@@ -37,8 +37,7 @@ async def on_ready():
           f'{client.user} is connected to the following guild:\n'
           f'{guild.name}(id: {guild.id})\n'
           f'Sometimes Life is Pain\n'
-          f'for da love of god stop breakin shid\n'
-          f'Riperino piperino instagramerino prejecterino')
+          )
 
 
 @client.event
