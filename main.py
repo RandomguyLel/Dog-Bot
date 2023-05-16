@@ -6,11 +6,17 @@ import re
 from discord.ext.commands import Bot
 from dotenv import load_dotenv
 
+intents = discord.Intents.default()  # Create a new instance of the Intents class
+intents.messages = True  # Adjust the intents based on your bot's requirements
+intents.presences = True
+
+client = discord.Client(intents=intents)  # Pass the intents argument when creating the client instance
+
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 PREFIX = os.getenv('DISCORD_PREFIX')
-client = discord.Client()
+client = discord.Client(intents=intents)
 
 client = Bot(command_prefix=list(PREFIX))
 
