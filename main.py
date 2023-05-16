@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 intents = discord.Intents.default()  # Create a new instance of the Intents class
 intents.messages = True  # Adjust the intents based on your bot's requirements
 intents.presences = True
+intents.message_content = True
 
 client = discord.Client(intents=intents)  # Pass the intents argument when creating the client instance
 
