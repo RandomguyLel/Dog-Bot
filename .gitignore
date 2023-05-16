@@ -105,3 +105,6 @@ venv.bak/
 # Extra stuff
 .replit
 replit.nix
+
+#git rm -r --cached <folder>
+#git rm --cached <file> -- Lai nonemtu no git trackoshanas
