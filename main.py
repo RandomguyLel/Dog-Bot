@@ -30,7 +30,9 @@ client = Bot(command_prefix=list(PREFIX), intents=intents)
 x = datetime.now()  #console time log
 x = str(x)
 
-user_messages = {} # Create a dictionary to store user messages and their corresponding converted links
+user_messages = {
+}  # Create a dictionary to store user messages and their corresponding converted links
+
 
 @client.event
 async def on_ready():
@@ -46,7 +48,9 @@ async def on_ready():
         f'{guild.name}(id: {guild.id})\n'
         f'Sometimes Life is Pain\n')
 
+
 # Create a dictionary to store user messages and their corresponding converted links
+
 
 @client.event
 async def on_message(message):
@@ -63,13 +67,14 @@ async def on_message(message):
     # Modify the link to replace "instagram" with "ddinstagram"
     modified_link = link.replace("instagram", "ddinstagram")
     # Extract the text part before and after the link
-    text_before_link = message.content.split(link)[0].strip()
+    #text_before_link = message.content.split(link)[0].strip()
     text_after_link = message.content.split(link)[-1].strip()
 
     # Send the modified link as a message
     await message.delete()
     #original_message, modified_link = user_messages[author]
-    await message.channel.send(f"Posted by {author}\n**Original message:** {text_before_link}{text_after_link}\n {modified_link}")
+    await message.channel.send(
+      f"Posted by {author}: **{text_after_link}**\n {modified_link}")
 
 # Use regex to match a link starting with "https://twitter.com/"
   match = re.match(r'(https:\/\/twitter\.com\/\S+)', message.content)
@@ -80,12 +85,13 @@ async def on_message(message):
     author = message.author.name
     # Modify the link to replace "twitter" with "fxtwitter"
     modified_link = link.replace("twitter", "vxtwitter")
-# Extract the text part before and after the link
-    text_before_link = message.content.split(link)[0].strip()
+    # Extract the text part before and after the link
+    #text_before_link = message.content.split(link)[0].strip()
     text_after_link = message.content.split(link)[-1].strip()
     # Send the modified link as a message
     await message.delete()
-    await message.channel.send(f"Posted by {author}\n**Original message:** {text_before_link}{text_after_link}\n {modified_link}")
+    await message.channel.send(
+      f"Posted by {author}: **{text_after_link}**\n {modified_link}")
 
 
 # Use regex to match a link starting with "https://tiktok.com/"
@@ -98,12 +104,14 @@ async def on_message(message):
     # Modify the link to replace "tiktok" with "vxtiktok"
     modified_link = link.replace("tiktok", "vxtiktok")
     # Extract the text part before and after the link
-    text_before_link = message.content.split(link)[0].strip()
+    #text_before_link = message.content.split(link)[0].strip()
     text_after_link = message.content.split(link)[-1].strip()
     # Send the modified link as a message
     await message.delete()
 
-    await message.channel.send(f"Posted by {author}\n**Original message:** {text_before_link}{text_after_link}\n {modified_link}")
+    await message.channel.send(
+      f"Posted by {author}: **{text_after_link}**\n {modified_link}")
+    
 
   if message.content.startswith('$hello'):
     await message.channel.send('Whoever summoned me is gay')

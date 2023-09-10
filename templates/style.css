@@ -1,0 +1,16 @@
+hr {
+  width: 80%;
+  border-style: dashed;
+  border-width: 7px;
+}
+
+.navbar-li {
+  list-style-type: none;
+  margin-top: 3px;
+  color: black;
+}
+
+h1 {
+  font-size: 70px;
+  color: orange;
+}
