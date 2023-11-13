@@ -36,7 +36,7 @@ user_messages = {
 
 @client.event
 async def on_ready():
-  await client.change_presence(activity=discord.Game(name='Woof woof Im a dog')
+  await client.change_presence(activity=discord.Game(name='Got That Dawg in Me')
                                )
 
   for guild in client.guilds:
@@ -83,8 +83,8 @@ async def on_message(message):
     # Get the matched link
     link = match.group(1)
     author = message.author.name
-    # Modify the link to replace "twitter" with "fxtwitter"
-    modified_link = link.replace("twitter", "vxtwitter")
+    # Modify the link to replace "twitter" with "bettertwitfix -> https://github.com/dylanpdx/BetterTwitFix"
+    modified_link = link.replace("twitter", "fixvx")
     # Extract the text part before and after the link
     #text_before_link = message.content.split(link)[0].strip()
     text_after_link = message.content.split(link)[-1].strip()
@@ -118,8 +118,8 @@ async def on_message(message):
     # Get the matched link
     link = match.group(1)
     author = message.author.name
-    # Modify the link to replace "x" with "vxtwitter (temp fix)"
-    modified_link = link.replace("x", "vxtwitter")
+    # Modify the link to replace "x" with "BetterTwitFix -> https://github.com/dylanpdx/BetterTwitFix"
+    modified_link = link.replace("x", "fixvx")
     # Extract the text part before and after the link
     #text_before_link = message.content.split(link)[0].strip()
     text_after_link = message.content.split(link)[-1].strip()
