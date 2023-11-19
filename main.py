@@ -1,4 +1,4 @@
-from keep_alive import keep_alive
+#from keep_alive import keep_alive
 import os
 import discord
 from datetime import datetime
@@ -171,7 +171,7 @@ async def on_message(message):
   if message.content.startswith('pips'):
     await message.channel.send('pats ne labaks')
 
-keep_alive()
+#keep_alive()
 client.run(TOKEN)
 #ahujel ble, actual threats ble, jo teoretisk jus redzet nevarat lkm
 #omegalul haha, nja .env laikam tik creatoram redzams
