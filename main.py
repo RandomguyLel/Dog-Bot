@@ -36,7 +36,7 @@ user_messages = {
 
 @client.event
 async def on_ready():
-  await client.change_presence(activity=discord.Game(name='Got That Dawg in Me')
+  await client.change_presence(activity=discord.Game(name='That Dawg in Me')
                                )
 
   for guild in client.guilds:
@@ -74,7 +74,7 @@ async def on_message(message):
     await message.delete()
     #original_message, modified_link = user_messages[author]
     await message.channel.send(
-      f"Posted by {author}: **{text_after_link}**\n {modified_link}")
+      f"Posted by {author}: **{text_after_link}**\n {modified_link}", silent=True)
 
 # Use regex to match a link starting with "https://twitter.com/"
   match = re.match(r'(https:\/\/twitter\.com\/\S+)', message.content)
@@ -91,7 +91,7 @@ async def on_message(message):
     # Send the modified link as a message
     await message.delete()
     await message.channel.send(
-      f"Posted by {author}: **{text_after_link}**\n {modified_link}")
+      f"Posted by {author}: **{text_after_link}**\n {modified_link}", silent=True)
 
 
 # Use regex to match a link starting with "https://tiktok.com/"
@@ -110,7 +110,7 @@ async def on_message(message):
     await message.delete()
 
     await message.channel.send(
-      f"Posted by {author}: **{text_after_link}**\n {modified_link}")
+      f"Posted by {author}: **{text_after_link}**\n {modified_link}", silent=True)
     
 # Use regex to match a link starting with "https://x.com/" (temp fix)
   match = re.match(r'(https?:\/\/(?:\.)?x\.com\/\S+)', message.content)
@@ -127,7 +127,7 @@ async def on_message(message):
     await message.delete()
 
     await message.channel.send(
-      f"Posted by {author}: **{text_after_link}**\n {modified_link}")
+      f" Posted by {author}: **{text_after_link}**\n {modified_link}", silent=True)
 
   if message.content.startswith('$hello'):
     await message.channel.send('Whoever summoned me is gay')
