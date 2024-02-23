@@ -36,8 +36,7 @@ user_messages = {
 
 @client.event
 async def on_ready():
-  await client.change_presence(activity=discord.Game(name='That Dawg in Me')
-                               )
+  await client.change_presence(activity=discord.Game(name='Barking Simulator'))
 
   for guild in client.guilds:
     if guild.name == GUILD:
@@ -57,6 +56,9 @@ async def on_message(message):
   if message.author == client.user:
     print('Dog is doing stuff ' + x)
     return
+
+# Instagram Block ------------------------------------
+
 # Use regex to match a link starting with "https://www.instagram.com/"
   match = re.match(r'(https:\/\/www\.instagram\.com\/\S+)', message.content)
 
@@ -74,8 +76,28 @@ async def on_message(message):
     await message.delete()
     #original_message, modified_link = user_messages[author]
     await message.channel.send(
-      f"Posted by {author}: **{text_after_link}**\n {modified_link}", silent=True)
+      f"Posted by {author}: **{text_after_link}**\n {modified_link}",
+      silent=True)
 
+# Twitter(X) Block ------------------------------------
+
+# Use regex to match a link starting with "https://x.com/" (temp fix)
+  match = re.match(r'(https?:\/\/(?:\.)?x\.com\/\S+)', message.content)
+  if match:
+    # Get the matched link
+    link = match.group(1)
+    author = message.author.name
+    # Modify the link to replace "x" with "BetterTwitFix -> https://github.com/dylanpdx/BetterTwitFix"
+    modified_link = link.replace("x", "fixvx")
+    # Extract the text part before and after the link
+    #text_before_link = message.content.split(link)[0].strip()
+    text_after_link = message.content.split(link)[-1].strip()
+    # Send the modified link as a message
+    await message.delete()
+
+    await message.channel.send(
+      f" Posted by {author}: **{text_after_link}**\n {modified_link}",
+      silent=True)
 # Use regex to match a link starting with "https://twitter.com/"
   match = re.match(r'(https:\/\/twitter\.com\/\S+)', message.content)
 
@@ -91,9 +113,10 @@ async def on_message(message):
     # Send the modified link as a message
     await message.delete()
     await message.channel.send(
-      f"Posted by {author}: **{text_after_link}**\n {modified_link}", silent=True)
+      f"Posted by {author}: **{text_after_link}**\n {modified_link}",
+      silent=True)
 
-
+# Tiktok Block ------------------------------------
 # Use regex to match a link starting with "https://tiktok.com/"
   match = re.match(r'(https?:\/\/(?:www\.)?tiktok\.com\/\S+)', message.content)
 
@@ -110,24 +133,28 @@ async def on_message(message):
     await message.delete()
 
     await message.channel.send(
-      f"Posted by {author}: **{text_after_link}**\n {modified_link}", silent=True)
-    
-# Use regex to match a link starting with "https://x.com/" (temp fix)
-  match = re.match(r'(https?:\/\/(?:\.)?x\.com\/\S+)', message.content)
+      f"Posted by {author}: **{text_after_link}**\n {modified_link}",
+      silent=True)
+
+
+# Use regex to match a link starting with "https://vm.tiktok.com/"
+  match = re.match(r'(https?:\/\/(?:www\.)?vm\.tiktok\.com\/\S+)',
+                   message.content)
+
   if match:
     # Get the matched link
     link = match.group(1)
     author = message.author.name
-    # Modify the link to replace "x" with "BetterTwitFix -> https://github.com/dylanpdx/BetterTwitFix"
-    modified_link = link.replace("x", "fixvx")
+    # Modify the link to replace "vm.tiktok" with "vm.vxtiktok"
+    modified_link = link.replace("vm.tiktok", "vm.vxtiktok")
     # Extract the text part before and after the link
-    #text_before_link = message.content.split(link)[0].strip()
     text_after_link = message.content.split(link)[-1].strip()
     # Send the modified link as a message
     await message.delete()
 
     await message.channel.send(
-      f" Posted by {author}: **{text_after_link}**\n {modified_link}", silent=True)
+      f"Posted by {author}: **{text_after_link}**\n {modified_link}",
+      silent=True)
 
   if message.content.startswith('$hello'):
     await message.channel.send('Whoever summoned me is gay')
