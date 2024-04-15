@@ -1,4 +1,5 @@
-from keep_alive import keep_alive
+#from keep_alive import keep_alive
+import time
 import os
 import discord
 from datetime import datetime
@@ -36,7 +37,7 @@ user_messages = {
 
 @client.event
 async def on_ready():
-  await client.change_presence(activity=discord.Game(name='That Dawg in Me')
+  await client.change_presence(activity=discord.Game(name='Barking Simulator - MT')
                                )
 
   for guild in client.guilds:
@@ -57,6 +58,9 @@ async def on_message(message):
   if message.author == client.user:
     print('Dog is doing stuff ' + x)
     return
+
+# Instagram Block ------------------------------------
+
 # Use regex to match a link starting with "https://www.instagram.com/"
   match = re.match(r'(https:\/\/www\.instagram\.com\/\S+)', message.content)
 
@@ -65,7 +69,7 @@ async def on_message(message):
     link = match.group(1)
     author = message.author.name
     # Modify the link to replace "instagram" with "ddinstagram"
-    modified_link = link.replace("instagram", "d.ddinstagram")
+    modified_link = link.replace("instagram", "ddinstagram")
     # Extract the text part before and after the link
     #text_before_link = message.content.split(link)[0].strip()
     text_after_link = message.content.split(link)[-1].strip()
@@ -74,8 +78,28 @@ async def on_message(message):
     await message.delete()
     #original_message, modified_link = user_messages[author]
     await message.channel.send(
-      f"Posted by {author}: **{text_after_link}**\n {modified_link}", silent=True)
+      f"Posted by {author}: **{text_after_link}**\n {modified_link}",
+      silent=True)
 
+# Twitter(X) Block ------------------------------------
+
+# Use regex to match a link starting with "https://x.com/" (temp fix)
+  match = re.match(r'(https?:\/\/(?:\.)?x\.com\/\S+)', message.content)
+  if match:
+    # Get the matched link
+    link = match.group(1)
+    author = message.author.name
+    # Modify the link to replace "x" with "BetterTwitFix -> https://github.com/dylanpdx/BetterTwitFix"
+    modified_link = link.replace("x", "fixvx")
+    # Extract the text part before and after the link
+    #text_before_link = message.content.split(link)[0].strip()
+    text_after_link = message.content.split(link)[-1].strip()
+    # Send the modified link as a message
+    await message.delete()
+
+    await message.channel.send(
+      f" Posted by {author}: **{text_after_link}**\n {modified_link}",
+      silent=True)
 # Use regex to match a link starting with "https://twitter.com/"
   match = re.match(r'(https:\/\/twitter\.com\/\S+)', message.content)
 
@@ -91,8 +115,10 @@ async def on_message(message):
     # Send the modified link as a message
     await message.delete()
     await message.channel.send(
-      f"Posted by {author}: **{text_after_link}**\n {modified_link}", silent=True)
+      f"Posted by {author}: **{text_after_link}**\n {modified_link}",
+      silent=True)
 
+# Tiktok Block ------------------------------------
 
 # Use regex to match a link starting with "https://tiktok.com/"
   match = re.match(r'(https?:\/\/(?:www\.)?tiktok\.com\/\S+)', message.content)
@@ -110,24 +136,29 @@ async def on_message(message):
     await message.delete()
 
     await message.channel.send(
-      f"Posted by {author}: **{text_after_link}**\n {modified_link}", silent=True)
-    
-# Use regex to match a link starting with "https://x.com/" (temp fix)
-  match = re.match(r'(https?:\/\/(?:\.)?x\.com\/\S+)', message.content)
+      f"Posted by {author}: **{text_after_link}**\n {modified_link}",
+      silent=True)
+
+
+# Use regex to match a link starting with "https://vm.tiktok.com/"
+  match = re.match(r'(https?:\/\/(?:www\.)?vm\.tiktok\.com\/\S+)', message.content)
+
   if match:
     # Get the matched link
     link = match.group(1)
     author = message.author.name
-    # Modify the link to replace "x" with "BetterTwitFix -> https://github.com/dylanpdx/BetterTwitFix"
-    modified_link = link.replace("x", "fixvx")
+    # Modify the link to replace "vm.tiktok" with "vm.vxtiktok"
+    modified_link = link.replace("vm.tiktok", "vm.vxtiktok")
     # Extract the text part before and after the link
-    #text_before_link = message.content.split(link)[0].strip()
     text_after_link = message.content.split(link)[-1].strip()
     # Send the modified link as a message
     await message.delete()
 
     await message.channel.send(
-      f" Posted by {author}: **{text_after_link}**\n {modified_link}", silent=True)
+      f"Posted by {author}: **{text_after_link}**\n {modified_link}",
+      silent=True)
+
+#------------------------------------
 
   if message.content.startswith('$hello'):
     await message.channel.send('Whoever summoned me is gay')
@@ -135,8 +166,7 @@ async def on_message(message):
       await message.delete()
 
   if message.content.startswith('$bruh'):
-    await message.channel.send(
-      'https://tenor.com/view/bruh-bye-ciao-gif-5156041')
+    await message.channel.send('https://tenor.com/view/bruh-bye-ciao-gif-5156041')
     if message.content.startswith('$bruh'):
       await message.delete()
 
@@ -148,8 +178,7 @@ async def on_message(message):
 
   if message.content.startswith('$slap'):
     await message.channel.send(
-      'https://tenor.com/view/el-risitas-come-on-come-on-man-mustache-serious-gif-17362553'
-    )
+      'https://tenor.com/view/el-risitas-come-on-come-on-man-mustache-serious-gif-17362553')
     if message.content.startswith('$slap'):
       await message.delete()
 
@@ -171,7 +200,11 @@ async def on_message(message):
   if message.content.startswith('pips'):
     await message.channel.send('pats ne labaks')
 
-keep_alive()
+#keep_alive()
+os.system("ping -c 1 google.com")
+print("Warming up networking - 10 sec")
+time.sleep(10)
+os.system("ping -c 1 google.com")
 client.run(TOKEN)
 #ahujel ble, actual threats ble, jo teoretisk jus redzet nevarat lkm
 #omegalul haha, nja .env laikam tik creatoram redzams
