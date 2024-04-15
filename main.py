@@ -67,7 +67,7 @@ async def on_message(message):
     link = match.group(1)
     author = message.author.name
     # Modify the link to replace "instagram" with "ddinstagram"
-    modified_link = link.replace("instagram", "ddinstagram")
+    modified_link = link.replace("instagram", "d.ddinstagram")
     # Extract the text part before and after the link
     #text_before_link = message.content.split(link)[0].strip()
     text_after_link = message.content.split(link)[-1].strip()
