@@ -173,7 +173,7 @@ python-versions = "*"
 
 [[package]]
 name = "discord.py"
-version = "2.2.3"
+version = "2.3.2"
 description = "A Python wrapper for the Discord API"
 category = "main"
 optional = false
@@ -294,7 +294,7 @@ python-versions = ">=3.8"
 
 [[package]]
 name = "packaging"
-version = "23.0"
+version = "24.0"
 description = "Core utilities for Python packages"
 category = "dev"
 optional = false
@@ -331,15 +331,16 @@ totp = ["cryptography"]
 
 [[package]]
 name = "platformdirs"
-version = "2.6.2"
-description = "A small Python package for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
+version = "4.2.1"
+description = "A small Python package for determining appropriate platform-specific dirs, e.g. a `user data dir`."
 category = "dev"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 
 [package.extras]
-docs = ["furo (>=2022.12.7)", "proselint (>=0.13)", "sphinx-autodoc-typehints (>=1.19.5)", "sphinx (>=5.3)"]
-test = ["appdirs (==1.4.4)", "covdefaults (>=2.2.2)", "pytest-cov (>=4)", "pytest-mock (>=3.10)", "pytest (>=7.2)"]
+docs = ["furo (>=2023.9.10)", "proselint (>=0.13)", "sphinx-autodoc-typehints (>=1.25.2)", "sphinx (>=7.2.6)"]
+test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest-cov (>=4.1)", "pytest-mock (>=3.12)", "pytest (>=7.4.3)"]
+type = ["mypy (>=1.8)"]
 
 [[package]]
 name = "pluggy"
@@ -429,22 +430,22 @@ test = ["coverage", "pytest-cov", "pytest", "pyflakes", "pycodestyle", "pylint"]
 
 [[package]]
 name = "pytoolconfig"
-version = "1.2.5"
+version = "1.3.1"
 description = "Python tool configuration"
 category = "dev"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 
 [package.dependencies]
-packaging = ">=22.0"
-platformdirs = {version = ">=1.4.4", optional = true, markers = "extra == \"global\""}
+packaging = ">=23.2"
+platformdirs = {version = ">=3.11.0", optional = true, markers = "extra == \"global\""}
 tomli = {version = ">=2.0.1", markers = "python_version < \"3.11\""}
 
 [package.extras]
-doc = ["tabulate (>=0.8.9)", "sphinx (>=4.5.0)"]
-gendocs = ["sphinx (>=4.5.0)", "sphinx-autodoc-typehints (>=1.18.1)", "sphinx-rtd-theme (>=1.0.0)", "pytoolconfig"]
-global = ["platformdirs (>=1.4.4)"]
-validation = ["pydantic (>=1.7.4)"]
+validation = ["pydantic (>=2.5.3)"]
+global = ["platformdirs (>=3.11.0)"]
+doc = ["tabulate (>=0.9.0)", "sphinx (>=7.1.2)"]
+gendocs = ["sphinx (>=7.1.2)", "sphinx-autodoc-typehints (>=1.25.2)", "sphinx-rtd-theme (>=2.0.0)", "pytoolconfig"]
 
 [[package]]
 name = "replit"
@@ -619,7 +620,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.10.0,<3.11"
-content-hash = "930add4e48a459d5661a1640748dfdd70ba2ac9981fd27a18cf612041aaddded"
+content-hash = "24a5c46a45bc34b543de1ffa1a81e170c5ec0d28918cf09fd95c711f370e96a4"
 
 [metadata.files]
 aiohttp = []

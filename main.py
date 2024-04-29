@@ -37,7 +37,7 @@ user_messages = {
 
 @client.event
 async def on_ready():
-  await client.change_presence(activity=discord.Game(name='Barking Simulator - MT')
+  await client.change_presence(activity=discord.Game(name='Replit Test')
                                )
 
   for guild in client.guilds:
@@ -159,7 +159,28 @@ async def on_message(message):
       silent=True)
 
 #------------------------------------
+# Reddit Block ------------------------------------
 
+# Use regex to match a link starting with "https://reddit.com/"
+  match = re.match(r'(https?:\/\/(?:www\.)?reddit\.com\/\S+)', message.content)
+
+  if match:
+    # Get the matched link
+    link = match.group(1)
+    author = message.author.name
+    # Modify the link to replace "reddit" with "rxddit"
+    modified_link = link.replace("reddit", "rxddit")
+    # Extract the text part before and after the link
+    #text_before_link = message.content.split(link)[0].strip()
+    text_after_link = message.content.split(link)[-1].strip()
+    # Send the modified link as a message
+    await message.delete()
+
+    await message.channel.send(
+      f"Posted by {author}: **{text_after_link}**\n {modified_link}",
+      silent=True)
+
+#------------------------------------
   if message.content.startswith('$hello'):
     await message.channel.send('Whoever summoned me is gay')
     if message.content.startswith('$hello'):
