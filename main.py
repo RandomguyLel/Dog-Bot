@@ -181,6 +181,29 @@ async def on_message(message):
       silent=True)
 
 #------------------------------------
+# Twitch Block ------------------------------------
+
+# Use regex to match a link starting with "https://clips.twitch.tv/"
+  match = re.match(r'(https?:\/\/(?:www\.)?clips\.twitch\.tv\/\S+)', message.content)
+
+  if match:
+    # Get the matched link
+    link = match.group(1)
+    author = message.author.name
+    # Modify the link to replace "twitch" with "fxtwitch"
+    modified_link = link.replace("twitch", "fxtwitch")
+    # Extract the text part before and after the link
+    text_after_link = message.content.split(link)[-1].strip()
+    # Delete the original message
+    await message.delete()
+
+    # Send the modified link as a message
+    await message.channel.send(
+      f"Posted by {author}: **{text_after_link}**\n {modified_link}",
+      silent=True)
+
+
+#------------------------------------
   if message.content.startswith('$hello'):
     await message.channel.send('Whoever summoned me is gay')
     if message.content.startswith('$hello'):
